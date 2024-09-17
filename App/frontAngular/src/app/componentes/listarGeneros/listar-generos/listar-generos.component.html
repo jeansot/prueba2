@@ -1,0 +1,17 @@
+<div>
+    <h3>Selecciona un género literario</h3>
+    
+  
+    <!-- Dropdown de géneros literarios -->
+    <select class="form-control" [(ngModel)]="selectedGenero">
+        <option *ngFor="let genero of generos" [value]="genero._id">
+          {{ genero.name }}
+        </option>
+      </select>
+      
+    
+    <p *ngIf="selectedGenero">Género seleccionado: {{ selectedGenero }}</p>
+  </div>
+  
+  
+  

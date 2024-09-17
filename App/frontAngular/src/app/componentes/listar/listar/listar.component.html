@@ -1,0 +1,17 @@
+<div class="libros-container">
+    <h3>Listado de Libros</h3>
+    <div *ngIf="libros.length > 0" class="libros-list">
+      <div *ngFor="let libro of libros" class="libro-item">
+        <h5>{{ libro.title }}</h5>
+        <p>Autor: {{ libro.author }}</p>
+        <p>Género: {{ libro.genre }}</p>
+        <p>Año de Publicación: {{ libro.publishedYear || 'N/A' }}</p>
+        <button class="btn btn-danger btn-sm float-right" (click)="eliminarUnLibro(libro)">Eliminar un libro</button>
+        <button class="btn btn-warning btn-sm float-right mr-2" (click)="editarUnLibro(libro)">Editar un libro</button>
+      </div>
+    </div>
+    <ng-template #noLibros>
+        <p>No hay libros disponibles.</p>
+      </ng-template>
+    
+  </div>

@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <h2>Buscar un libro por ID</h2>
+    
+    <!-- Formulario de búsqueda de libro -->
+    <form (ngSubmit)="traerUnLibro()" #buscarForm="ngForm" class="form-horizontal">
+      
+      <!-- Campo para ingresar el ID del libro -->
+      <div class="form-group">
+        <label for="idLibro">ID del Libro</label>
+        <input type="text" class="form-control" id="idLibro" name="idLibro" required [(ngModel)]="idLibro" #idLibroField="ngModel">
+        <div *ngIf="idLibroField.invalid && idLibroField.touched" class="text-danger">
+          El ID del libro es requerido.
+        </div>
+      </div>
+  
+      <!-- Botón para buscar el libro -->
+      <button type="submit" class="btn btn-primary" [disabled]="buscarForm.invalid">Buscar Libro</button>
+    </form>
+  
+    <!-- Mostrar el resultado de la búsqueda -->
+    <div *ngIf="libro" class="mt-4">
+      <h4>Información del Libro</h4>
+      <p><strong>Título:</strong> {{ libro.title }}</p>
+      <p><strong>Autor:</strong> {{ libro.author }}</p>
+      <p><strong>Género:</strong> {{ libro.genre }}</p>
+      <p><strong>Año de Publicación:</strong> {{ libro.publishedYear || 'N/A' }}</p>
+    </div>

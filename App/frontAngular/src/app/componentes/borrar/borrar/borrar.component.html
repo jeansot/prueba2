@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <h3>Eliminar Libro</h3>
+  
+    <!-- Mostrar información del libro que se va a eliminar -->
+    <div *ngIf="libro && libro.title">
+      <p>¿Estás seguro de que deseas eliminar el siguiente libro?</p>
+      <ul>
+        <li><strong>Título:</strong> {{ libro.title }}</li>
+        <li><strong>Autor:</strong> {{ libro.author }}</li>
+        <li><strong>Género:</strong> {{ libro.genre }}</li>
+        <li><strong>Año de Publicación:</strong> {{ libro.publishedYear }}</li>
+      </ul>
+  
+      <!-- Botones para confirmar o cancelar la acción -->
+      <div class="mt-3">
+        <button class="btn btn-danger" (click)="borrar()">Eliminar</button>
+        <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
+  
+    <!-- Mensaje en caso de que no se haya seleccionado ningún libro -->
+    <div *ngIf="!libro || !libro.title">
+      <p>No se ha seleccionado ningún libro para eliminar.</p>
+    </div>
+  </div>
+  

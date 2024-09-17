@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-5">
+  <a class="navbar-brand" href="#">Inventario de libros</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item"> 
+        <button class="btn btn-outline-primary" (click)="showListar()">Mostrar Libros</button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-outline-primary" (click)="showListarGenero()">Mostrar Géneros</button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-outline-primary" (click)="showBuscar()">Buscar Libro</button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-outline-success" (click)="showAgregar()">Agregar un nuevo libro</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div *ngIf="currentOption=='Listar'">
+    <app-listar [libros]="libros" (libro)="handleSelectedLibro($event)" (currentOption)="handleSelectedOption($event)"></app-listar>
+  </div>
+  <div *ngIf="currentOption=='Buscar'">
+    <app-buscar ></app-buscar>
+  </div>
+  <div *ngIf="currentOption=='Editar'">
+    <app-editar [libro]="selectedLibro"></app-editar>
+  </div>
+  <div *ngIf="currentOption=='Agregar'">  
+    <app-nuevo></app-nuevo>
+  </div>
+  <div *ngIf="currentOption=='ListarGenero'">
+    <app-listar-generos [generos]="generos"></app-listar-generos>
+  </div>
+  <div *ngIf="currentOption=='Nuevo'">
+    <app-nuevo  [generos]="generos"></app-nuevo>
+  </div>
+  <div *ngIf="currentOption=='Borrar'">
+    <app-borrar [libro]="selectedLibro" (currentOption)="handleSelectedOption($event)"></app-borrar>
+  </div>
+</div>
+
+  
